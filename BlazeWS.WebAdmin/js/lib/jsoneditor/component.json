@@ -1,0 +1,37 @@
+{
+  "name": "jsoneditor",
+  "version": "2.2.1",
+  "description": "A web-based tool to view, edit and format JSON",
+  "tags": [
+    "json",
+    "editor",
+    "viewer",
+    "formatter"
+  ],
+  "homepage": "http://jsoneditoronline.org/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/josdejong/jsoneditor.git"
+  },
+  "bugs": "https://github.com/josdejong/jsoneditor/issues",
+  "ignore": [
+    "app",
+    "build",
+    "downloads",
+    "jsoneditor",
+    "misc",
+    "node_modules",
+    "test",
+    "tools",
+    ".idea",
+    "Jakefile.js",
+    "package.json",
+    ".npmignore",
+    ".gitignore"
+  ],
+  "dependencies": {},
+  "gitHead": "f3ca6ad84ff9c0551d47e82ec30cb834691903ac",
+  "readme": "# JSON Editor Online\r\nhttp://jsoneditoronline.org/\r\n\r\n\r\n### Description\r\n\r\nJSON Editor Online is a web-based tool to view, edit, and format JSON.\r\nIt has various modes such as a tree editor, a code editor, and a plain text\r\neditor.\r\n\r\nThe editor can be used as a component in your own web application. The library\r\ncan be loaded as CommonJS module, AMD module, or as a regular javascript file.\r\n\r\n### Screenshot\r\n\r\nThe web application shows two panels side by side: a code editor on the left,\r\nand a tree editor on the right. Files and urls can be loaded via the main menu.\r\n\r\n<a href=\"http://jsoneditoronline.org\">\r\n    <img alt=\"jsoneditor\"\r\n        src=\"https://raw.github.com/josdejong/jsoneditor/master/misc/screenshots/jsoneditoronline.png\">\r\n</a>\r\n\r\n\r\n### Features\r\n\r\n#### Tree editor\r\n- Edit, add, move, remove, and duplicate fields and values.\r\n- Change type of values.\r\n- Sort arrays and objects.\r\n- Colorized code.\r\n- Search & highlight text in the treeview.\r\n- Undo and redo all actions.\r\n\r\n#### Code editor\r\n- Format and compact JSON.\r\n- Colorized code (powered by Ace).\r\n- Inspect JSON (powered by Ace).\r\n\r\n#### Text editor\r\n- Format and compact JSON.\r\n\r\n\r\n### Documentation\r\n\r\n- [Docs](https://github.com/josdejong/jsoneditor/tree/master/docs)\r\n- [Examples](https://github.com/josdejong/jsoneditor/tree/master/examples)\r\n- [Source](https://github.com/josdejong/jsoneditor)\r\n- [History](https://github.com/josdejong/jsoneditor/blob/master/HISTORY.md)\r\n\r\n\r\n### Install\r\n\r\nwith npm:\r\n\r\n    npm install jsoneditor\r\n\r\nwith bower:\r\n\r\n    npm install bower\r\n\r\ndownload:\r\n\r\n[http://jsoneditoronline.org/downloads/](http://jsoneditoronline.org/downloads/)\r\n\r\n\r\n### Use\r\n\r\n```html\r\n<!DOCTYPE HTML>\r\n<html>\r\n<head>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"jsoneditor/jsoneditor-min.css\">\r\n    <script type=\"text/javascript\" src=\"jsoneditor/jsoneditor-min.js\"></script>\r\n</head>\r\n<body>\r\n    <div id=\"jsoneditor\" style=\"width: 400px; height: 400px;\"></div>\r\n\r\n    <script type=\"text/javascript\" >\r\n        // create the editor\r\n        var container = document.getElementById(\"jsoneditor\");\r\n        var editor = new jsoneditor.JSONEditor(container);\r\n\r\n        // set json\r\n        var json = {\r\n            \"Array\": [1, 2, 3],\r\n            \"Boolean\": true,\r\n            \"Null\": null,\r\n            \"Number\": 123,\r\n            \"Object\": {\"a\": \"b\", \"c\": \"d\"},\r\n            \"String\": \"Hello World\"\r\n        };\r\n        editor.set(json);\r\n\r\n        // get json\r\n        var json = editor.get();\r\n    </script>\r\n</body>\r\n</html>\r\n```\r\n\r\n### Build\r\n\r\nThe code of the JSON Editor is located in the folder `jsoneditor`.\r\nThe code for the web application in `app/web`.\r\nTo build the library from sourcecode, run\r\n\r\n    jake\r\n\r\nin the root of the project. This will generate the files `jsoneditor.js`,\r\n`jsoneditor.css`, and minified versions, and will create a folder `build`\r\ncontaining the zipped library and the built web application.\r\n",
+  "readmeFilename": "README.md",
+  "_id": "jsoneditor@2.2.1"
+}

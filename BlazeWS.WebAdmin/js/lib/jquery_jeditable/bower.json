@@ -1,0 +1,8 @@
+{
+  "name": "jquery_jeditable",
+  "version": "1.7.4",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chilijung/jquery_jeditable.git"
+  }
+}

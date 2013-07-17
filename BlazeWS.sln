@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Illisian.Nhibernate", "Illisian.Nhibernate\Illisian.Nhibernate.csproj", "{6ED0F326-2A68-4259-A637-7DB9CA8BFE86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Shared", "BlazeWS.Shared\BlazeWS.Shared.csproj", "{CBAE6263-D858-46B5-BE1E-686C4C23DA39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{84933349-EF4C-4F12-A9A8-A2B40259F40E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Client.v4", "BlazeWS.Client.v4\BlazeWS.Client.v4.csproj", "{10091ACD-0248-4ED0-85DB-E860F62467FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Tests", "BlazeWS.Server.Tests\BlazeWS.Server.Tests.csproj", "{CC083B13-062D-4F02-8689-CBF020E9972C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.WebAdmin", "BlazeWS.WebAdmin\BlazeWS.WebAdmin.csproj", "{8B8A150F-A0DB-42F1-81A0-579D47DEC371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Web", "BlazeWS.Server.Web\BlazeWS.Server.Web.csproj", "{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server", "BlazeWS.Server\BlazeWS.Server.csproj", "{765BE395-062D-43FD-A910-03E7643FFCBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ED0F326-2A68-4259-A637-7DB9CA8BFE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED0F326-2A68-4259-A637-7DB9CA8BFE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED0F326-2A68-4259-A637-7DB9CA8BFE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED0F326-2A68-4259-A637-7DB9CA8BFE86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC083B13-062D-4F02-8689-CBF020E9972C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC083B13-062D-4F02-8689-CBF020E9972C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC083B13-062D-4F02-8689-CBF020E9972C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC083B13-062D-4F02-8689-CBF020E9972C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8A150F-A0DB-42F1-81A0-579D47DEC371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8A150F-A0DB-42F1-81A0-579D47DEC371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8A150F-A0DB-42F1-81A0-579D47DEC371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8A150F-A0DB-42F1-81A0-579D47DEC371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765BE395-062D-43FD-A910-03E7643FFCBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765BE395-062D-43FD-A910-03E7643FFCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765BE395-062D-43FD-A910-03E7643FFCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765BE395-062D-43FD-A910-03E7643FFCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = BlazeWS.Server\BlazeWS.Server.csproj
+	EndGlobalSection
+EndGlobal

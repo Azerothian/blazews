@@ -1,0 +1,6 @@
+﻿<select Name="Id" class="ddlApplicationId">
+    <option value="">--- Please Select ---</option>
+    <% Applications.each(function (app) { %>
+          <option value="<%= app.get('Id') %>"><%= app.get('Name') %></option>
+    <% }); %>
+</select>

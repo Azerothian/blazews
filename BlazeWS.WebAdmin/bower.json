@@ -1,0 +1,18 @@
+{
+  "name": "BlazeWS.WebAdmin",
+  "version": "0.0.1",
+  "main": "/js/app.js",
+  "ignore": [ ],
+  "dependencies": {
+    "backbone-amd": "*",
+	"underscore-amd": "*",
+	"jquery": "*",
+	"jquery-ui": "*",
+	"requirejs": "*",
+	"requirejs-text": "*",
+	"require-css": "*",
+	"require-less": "*",
+	"jquery_jeditable": "*",
+	"jsoneditor": "*"
+  }
+}
