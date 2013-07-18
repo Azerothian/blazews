@@ -17,13 +17,17 @@
 
             },
             OnConfigure: function (config) {
+                console.log("SET CONFIG", { config: config });
                 if (config.collection) {
+                    
                     this.SetDataCollection(config.collection);
+                    
                 }
+                console.log("BOUND", { config: config });
             },
             SetDataCollection: function (col) {
                 this.collection = col;
-
+                
                 this.listenTo(this.collection, 'add', this.OnDataAdd);
                 this.listenTo(this.collection, 'remove', this.OnDataRemove);
                 this.listenTo(this.collection, 'change', this.OnDataChange);

@@ -2,15 +2,15 @@ var app = app || {};
 app.Logic = app.Logic || {};
 
 requirejs.config({
-    baseUrl: '/js/lib',
+    baseUrl: '/lib',
     paths: {
-        app: '/js',
-        views: '/js/views',
-        logic: '/js/logic',
-        templates: '/templates',
-        util: '/js/util',
-        collections: '/js/collections',
-        model: '/js/model',
+        app: '/app',
+        views: '/app/views',
+        logic: '/app/logic',
+        templates: '/app/templates',
+        util: '/app/util',
+        collections: '/app/collections',
+        model: '/app/model',
         'jquery': 'jquery/jquery',
         'jquery-ui': 'jquery-ui/ui/jquery-ui',
         'underscore': 'underscore-amd/underscore',

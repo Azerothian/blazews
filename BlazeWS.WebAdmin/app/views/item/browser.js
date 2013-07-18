@@ -16,7 +16,7 @@
                 //Need to get application id and root item
 
                 this.collection = new Items;
-                currentApplication = app.Data.System.get("currentApplication");
+                
 
                 this.template = template;
                 
@@ -49,6 +49,7 @@
 
                         }
                     });
+                    currentApplication = app.Data.System.get("currentApplication");
                     control.collection.fetch({
                         data: {
                             Id: currentApplication.get("BaseItem"),

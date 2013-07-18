@@ -1,7 +1,7 @@
 {
   "name": "BlazeWS.WebAdmin",
   "version": "0.0.1",
-  "main": "/js/app.js",
+  "main": "/app/app.js",
   "ignore": [ ],
   "dependencies": {
     "backbone-amd": "*",
