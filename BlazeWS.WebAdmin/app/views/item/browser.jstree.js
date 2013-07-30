@@ -27,14 +27,35 @@
                         PrimaryKey: 'Id',
                         ParentKey: 'Parent',
                         Editable: false,
-                        Selectable: {
-                            OnSelect: _.bind(function (model) {
+                        Events: {
+                            Select: _.bind(function (model) {
 
                                 var itemEditor = this.getChildByName('ctlItemEditor');
-                                console.log("Browser OnSelect", { model: model, itemeditor: itemEditor });
+                                console.log("Browser Select", { model: model, itemeditor: itemEditor });
                                 itemEditor.SetDataSource(model);
 
+                            }, this),
+                            Create: _.bind(function (create) {
+
+
+
+
+                            }, this),
+                            Expand: _.bind(function(id, collection){ 
+
+                                collection.GetChildren({
+                                    data: {
+                                        ParentItem: id,
+                                        Application: app.Data.System.GetCurrentApplicationId()
+                                    }, success: _.bind(function () {
+
+
+                                    }, this)
+
+                                });
+
                             }, this)
+
 
                         }
                     });
@@ -52,7 +73,7 @@
                     });
                 }
 
-//                this.$el.append("");
+                //                this.$el.append("");
                 //this.$el.html();
 
             },
@@ -82,10 +103,10 @@
 
             },
             OnDispose: function () {
-             //   this.modelBinder.unbind();
+                //   this.modelBinder.unbind();
             },
             btnClose_OnClick: function () {
-               // app.Data.Applications.remove(this.DataSource);
+                // app.Data.Applications.remove(this.DataSource);
                 this.$el.dialog("close");
                 this.dispose();
 

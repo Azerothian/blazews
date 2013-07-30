@@ -18,6 +18,7 @@
                 data: obj.data,
                 success: _.bind(function () {
                     this.each(function (m) {
+                        console.log("bind url", m);
                         m.url = m.defaultUrl;
                     });
 
