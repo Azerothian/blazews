@@ -35,11 +35,8 @@
                                 itemEditor.SetDataSource(model);
 
                             }, this),
-                            Create: _.bind(function (create) {
-
-
-
-
+                            BeforeCreate: _.bind(function (create) {
+                                create.model.set("Application", app.Data.System.GetCurrentApplicationId());
                             }, this),
                             Expand: _.bind(function(id, collection){ 
 

@@ -64,9 +64,8 @@
                 }, this))
                     .jstree({
                         "plugins": ["themes", "ui", "crrm", "contextmenu"]
-                    })
-                    .bind("loaded.jstree", function (event, data) {
-                        console.log("LOADED JSTREE");
+                    }).bind("loaded.jstree", function (event, data) {
+                        // console.log("LOADED JSTREE");
                         // you get two params - event & data - check the core docs for a detailed description
                     }).bind("select_node.jstree", _.bind(function (event, data) {
                         // `data.rslt.obj` is the jquery extended node that was clicked
@@ -80,36 +79,64 @@
                         }
 
                     }, this)).bind("create.jstree", _.bind(function (e, data) {
-                        if ($(data.rslt.obj).attr("Id") === undefined) {
-
+                        if ($(data.rslt.obj).attr('Id') === undefined) {
                             var model = new this.collection.model;
                             model.set(this.config.TextField, data.rslt.name);
+                            model.set(this.config.ParentKey, $(data.rslt.parent).attr('Id'));
+
                             $(this.root).find(data.rslt.obj).remove();
+                            if (this.config.Events) {
+                                if (this.config.Events.BeforeCreate) {
+                                    this.config.Events.BeforeCreate({ model: model, name: data.rslt.name, element: data.rslt.obj, parent: data.rslt.parent });
+                                }
+                            }
+
                             model.save({}, {
                                 success: _.bind(function (response) {
                                     console.log('[/jsui/tree.jstree/create] - Saving is a success', response);
-                                    console.log("trigger on event proxy");
-                                    this.trigger('CreateItem', { model: this.DataModel });
-                                    this.collection.sync();
+                                    this.trigger('CreateItem', { model: model });
+
                                     if (this.config.Events) {
-                                        if (this.config.Events.Create) {
-                                            this.config.Events.Create({ name: data.rslt.name, element: data.rslt.obj, parent: data.rslt.parent });
+                                        if (this.config.Events.Expand) {
+                                            this.config.Events.Expand($(data.rslt.parent).attr('Id'), this.collection);
                                         }
+
                                     }
                                 }, this)
                             });
 
                             //this.collection.add(model);
-                            
+
 
                         }
-                    }, this)).bind("remove.jstree", function (e, data) {
+                    }, this)).bind("remove.jstree", _.bind(function (e, data) {
                         console.log("remove node", { e: e, data: data });
-                    }).bind("rename.jstree", function (e, data) {
-                        console.log("rename node", { e: e, data: data });
-                    }).bind("move_node.jstree", function (e, data) {
+                        var id = $(data.rslt.obj).attr('Id');
+                        if (id) {
+                            var model = this.collection.get(id);
+                            this.collection.remove(id);
+                            this.collection.commit({ success: function () { } });
+                        }
+
+
+                    },this)).bind("rename.jstree", _.bind(function (e, data) {
+                        console.log("rename node", e, data);
+                        var id = $(data.args[0]).attr('Id');
+                        console.log("rename node", { e: e, data: data, id: id });
+                        if (id) {
+                            var model = this.collection.get(id);
+                            model.set(this.config.TextField, data.rslt.new_name);
+                            model.save({}, {
+                                success: function () {
+                                    //TODO ... do something
+                                }
+                            });
+                        }
+
+
+                    }, this)).bind("move_node.jstree", _.bind(function (e, data) {
                         console.log("move node", { e: e, data: data });
-                    });
+                    }, this));
 
             },
             OnAfterRender: function () {
@@ -117,6 +144,7 @@
 
             },
             OnDataChange: function (model) {
+                console.log("DATACHANGE");
                 //var id = model.get(this.config.PrimaryKey);
                 //if (this.nodes[id]) {
                 //    if (this.config.TextField) {

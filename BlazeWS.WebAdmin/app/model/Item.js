@@ -2,7 +2,7 @@
     return Backbone.Model.extend({
         initialise: function() 
         {
-            _.bindAll(this, "defaultUrl");
+            _.bindAll(this, "defaultUrl", "url");
             this.url = this.defaultUrl();
         },
         idAttribute: 'Id',
@@ -11,9 +11,12 @@
             return settings.WebservicePath + path;
         },
 		sync: function (method, model) {
-		    console.log("model sync", { Method: method, Model: model });
+		    //console.log("model sync", { Method: method, Model: model });
 		    return Backbone.sync.apply(this, arguments);
-		}
+		},
+        url: function () {
+            return this.defaultUrl();
+        }
 
 
 	});
