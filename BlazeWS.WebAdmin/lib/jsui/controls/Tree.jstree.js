@@ -63,7 +63,13 @@
                     }
                 }, this))
                     .jstree({
-                        "plugins": ["themes", "ui", "crrm", "contextmenu"]
+                        "plugins": [
+                           // "themes",
+                           "themeroller",
+                           "dnd",
+                           "ui",
+                           "crrm",
+                           "contextmenu"]
                     }).bind("loaded.jstree", function (event, data) {
                         // console.log("LOADED JSTREE");
                         // you get two params - event & data - check the core docs for a detailed description
@@ -119,7 +125,7 @@
                         }
 
 
-                    },this)).bind("rename.jstree", _.bind(function (e, data) {
+                    }, this)).bind("rename.jstree", _.bind(function (e, data) {
                         console.log("rename node", e, data);
                         var id = $(data.args[0]).attr('Id');
                         console.log("rename node", { e: e, data: data, id: id });
@@ -136,6 +142,19 @@
 
                     }, this)).bind("move_node.jstree", _.bind(function (e, data) {
                         console.log("move node", { e: e, data: data });
+                        var child = data.rslt.o;
+                        var parent = data.rslt.np;
+                        var childId = $(child).attr('Id');
+                        var parentId = $(parent).attr('Id');
+                        var model = this.collection.get(childId);
+                        model.set(this.config.ParentKey, parentId);
+
+                        console.log("move node", { e: e, data: data, child: child, parent: parent, model: model, childId: childId, parentId: parentId });
+                        model.save({}, {
+                            success: function () {
+                                //TODO ... do something
+                            }
+                        });
                     }, this));
 
             },

@@ -90,7 +90,8 @@
 
 
                 this.$el.dialog({
-                    width: 650,
+                    width: 750,
+                    height: 550,
                     title: "Item Browser",
                     close: this.btnClose_OnClick,
 

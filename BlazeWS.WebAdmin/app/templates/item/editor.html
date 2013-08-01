@@ -1,19 +1,26 @@
 ﻿<div>
-    <div class="label">Name</div>
+    <label for="Id" class="label">Id</label>
+    <input id="Id" name="Id" type="text" disabled="disabled" />
+</div>
+<div>
+    <label class="label">Name</label>
     <input name="Name" type="text" />
 </div>
 <div>
-    <div class="label">Parent</div>
+    <label class="label">Parent</label>
     <input name="Parent" type="text" />
 </div>
 <div>
-    <div class="label">ObjectType</div>
+    <label class="label">ObjectType</label>
     <input name="ObjectType" type="text" />
 </div>
 <div>
-    <div class="label">ObjectData</div>
+    <label class="label">ObjectData</label>
     <input class="txtObjectData" name="ObjectData" type="text" />
 </div>
-<div class="buttons" style="display:none">
+
+<jsui name="jedObjectData" require="jsui/controls/JsonEditor" />
+
+<div class="buttons">
     <button class="btnSaveDetails">Save Details</button>
 </div>

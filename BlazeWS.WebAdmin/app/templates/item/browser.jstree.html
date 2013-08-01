@@ -1,15 +1,19 @@
-﻿<div class="divItemTreeHeader">
+﻿<!--<div class="divItemTreeHeader">
     <button class="btnCreateNewItem">Create New Item</button>
-</div>
+</div>-->
 <div>
     <div style="float: left; width: 250px;">
         <!-- Left Column -->
-        <div>
-            <jsui name="ctlItemTree" require="jsui/controls/Tree.jstree" />
-        </div>
+        <jsui name="ctlItemTree" require="jsui/controls/Tree.jstree" />
     </div>
-    <div style="float: left; width: 300px; margin-left: 10px;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable ui-resizable">
+    <div style="float: left; width: 400px; margin-left: 10px;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable ui-resizable">
         <!-- Right Column -->
         <jsui name="ctlItemEditor" require="views/item/editor" config="{}" />
     </div>
 </div>
+<style>
+    .jstree.ui-widget-content.jstree-themeroller.jstree-focused {
+        margin: 0;
+    }
+
+</style>
