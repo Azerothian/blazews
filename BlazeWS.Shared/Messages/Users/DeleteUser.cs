@@ -10,6 +10,7 @@ namespace BlazeWS.Shared.Messages.Users
     public class DeleteUser : IReturn<DeleteUserResponse>
     {
         public Guid Id { get; set; }
+        public Guid Application { get; set; }
     }
     public class DeleteUserResponse
     {

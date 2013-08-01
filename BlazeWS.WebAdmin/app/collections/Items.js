@@ -32,10 +32,19 @@
         //,getItems: _.bind(function (obj) {
         //    this.fetch({ data: { ApplicationId: this.ApplicationId, ParentItemId: obj.ParentItemId }, success: obj.success });
         //}, this),
-        sync: function(method, model)
-        {
-            console.log("collection sync", { Method: method, Model: model });
-            return Backbone.sync.apply(this, arguments);
+        //sync: function(method, model)
+        //{
+        //    console.log("collection sync", { Method: method, Model: model });
+        //    return Backbone.sync.apply(this, arguments);
+        //},
+        destroy: function () {
+		   
+            var args = _.extend(
+                {
+                    attrs: { 'Application': this.get('Application') }
+                }, arguments);
+            Backbone.Model.prototype.destroy.apply(this, args);
+		    
         }
     });
 

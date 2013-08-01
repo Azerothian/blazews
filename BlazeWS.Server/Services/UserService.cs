@@ -38,6 +38,10 @@ namespace BlazeWS.Server.Services
         /// <returns>CreateUserResponse.</returns>
         public CreateUserResponse Any(CreateUser request)
         {
+            if (request.Application == Guid.Empty)
+            {
+                throw new ArgumentException("You need to provide a application id to get a create a user");
+            }
             //CREATE NEW User
             var session = Illisian.Nhibernate.Database.Context.GetSession();
             User user = null;
@@ -154,11 +158,15 @@ namespace BlazeWS.Server.Services
         /// </summary>
         /// <param name="app">The app.</param>
         /// <returns>DeleteUserResponse.</returns>
-        public DeleteUserResponse Any(DeleteUser app)
+        public DeleteUserResponse Any(DeleteUser request)
         {
+            if (request.Application == Guid.Empty)
+            {
+                throw new ArgumentException("You need to provide a application id to delete a user");
+            }
             var result = false;
             var session = Illisian.Nhibernate.Database.Context.GetSession();
-            var a = UserLogic.LoadBy(session, p => p.Id == app.Id);
+            var a = UserLogic.LoadBy(session, p => p.Id == request.Id);
             if (a != null)
             {
                 using (var tx = session.BeginTransaction())
