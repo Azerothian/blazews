@@ -16,8 +16,8 @@ namespace BlazeWS.Client.Managers
         {
             if (!initialised)
             {
-                 AutoMapper.Mapper.CreateMap<DateTime, DateTime>().ConvertUsing
-                     (new DateTimeFix()); 
+                AutoMapper.Mapper.CreateMap<DateTime, DateTime>().ConvertUsing
+                    (new DateTimeFix());
 
                 AutoMapper.Mapper.CreateMap<DtoApplication, CreateApplication>();
                 AutoMapper.Mapper.CreateMap<DtoApplication, UpdateApplication>();
@@ -32,7 +32,7 @@ namespace BlazeWS.Client.Managers
 
         }
     }
-    public class DateTimeFix : ITypeConverter<DateTime,DateTime>
+    public class DateTimeFix : ITypeConverter<DateTime, DateTime>
     {
 
         public DateTime Convert(ResolutionContext context)

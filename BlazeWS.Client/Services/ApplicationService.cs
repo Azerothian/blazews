@@ -1,5 +1,4 @@
-﻿using BlazeWS.Client.Managers;
-using BlazeWS.Shared.Dto;
+﻿using BlazeWS.Shared.Dto;
 using BlazeWS.Shared.Messages.Applications;
 using ServiceStack.ServiceClient.Web;
 using System;
@@ -7,24 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BlazeWS.Client.Service
+namespace BlazeWS.Client
 {
     public class ApplicationService
     {
         JsonServiceClient _client;
-        public ApplicationService(string url = "http://blazews.localhost.com/")
+        public ApplicationService(JsonServiceClient client)
         {
-            AutoMapManager.Initialise();
-            _client = new JsonServiceClient(url);
+            _client = client;
         }
-
-
         public DtoApplication Create(DtoApplication dto)
         {
             var msg = AutoMapper.Mapper.Map<DtoApplication, CreateApplication>(dto);
-           return _client.Send<CreateApplicationResponse>(msg);
+            return _client.Send<CreateApplicationResponse>(msg);
         }
-        
+
         public DtoApplication Get(Guid id)
         {
             return _client.Send<GetApplicationResponse>(new GetApplication() { Id = id });
@@ -36,7 +32,7 @@ namespace BlazeWS.Client.Service
 
         public IEnumerable<DtoApplication> GetAll()
         {
-            return _client.Send<IEnumerable<DtoApplication>>(new ListApplications());
+            return _client.Send<ListApplicationsResponse>(new ListApplications()).Applications;
         }
 
         public bool Update(DtoApplication dto)
@@ -50,6 +46,7 @@ namespace BlazeWS.Client.Service
         {
             return _client.Send<DeleteApplicationResponse>(new DeleteApplication() { Id = id }).Success;
         }
+
 
     }
 }

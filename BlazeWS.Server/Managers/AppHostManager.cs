@@ -71,10 +71,12 @@ namespace BlazeWS.Server.Managers
            // AuthCacheClient = new MemcachedClientCache(new[] { new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11211) });
 
             container.Register<ICacheClient>(AuthCacheClient);
-
-            AuthFeature = new AuthFeature(() => new AuthUserSession(), new IAuthProvider[] {
-            	new AppSettingsAuthProvider()
-            });
+            //() => new AuthUserSession(), new IAuthProvider[] {
+            //    new AppSettingsAuthProvider()
+            //}
+            AuthFeature = new AuthFeature( new Func<IAuthSession>( () => new AuthUserSession()), new IAuthProvider[] {
+               new AppSettingsAuthProvider()
+            } );
 
             AuthFeature.ServiceRoutes.Remove(typeof(AssignRolesService));
             AuthFeature.ServiceRoutes.Remove(typeof(UnAssignRolesService));

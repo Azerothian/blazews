@@ -1,5 +1,4 @@
-﻿using BlazeWS.Client.Service;
-using BlazeWS.Shared.Dto;
+﻿using BlazeWS.Shared.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +15,15 @@ namespace BlazeWS.Client.Extensions
         }
         public static IEnumerable<DtoItem> GetChildren(this DtoItem item, ItemService service)
         {
-            
-            return service.GetAll(item.Application, item.Id);
+
+            return service.GetChildren(item.Application, item.Id);
         }
 
         public static T GetObject<T>(this DtoItem item)
         {
             //if (typeof(T).ToString() != item.ObjectType)
             //{
-            //    throw new ArgumentException("Type requested to cast to does not match stored content");
+            // throw new ArgumentException("Type requested to cast to does not match stored content");
             //}
 
             if (!string.IsNullOrEmpty(item.ObjectData))
@@ -45,7 +44,7 @@ namespace BlazeWS.Client.Extensions
                 item.ObjectData = "";
                 item.ObjectType = "";
             }
-            
+
         }
     }
 }

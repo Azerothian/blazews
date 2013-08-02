@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{849333
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Client.v4", "BlazeWS.Client.v4\BlazeWS.Client.v4.csproj", "{10091ACD-0248-4ED0-85DB-E860F62467FE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Tests", "BlazeWS.Server.Tests\BlazeWS.Server.Tests.csproj", "{CC083B13-062D-4F02-8689-CBF020E9972C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.WebAdmin", "BlazeWS.WebAdmin\BlazeWS.WebAdmin.csproj", "{8B8A150F-A0DB-42F1-81A0-579D47DEC371}"
@@ -21,6 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Web", "BlazeWS.Server.Web\BlazeWS.Server.Web.csproj", "{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server", "BlazeWS.Server\BlazeWS.Server.csproj", "{765BE395-062D-43FD-A910-03E7643FFCBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Client", "BlazeWS.Client\BlazeWS.Client.csproj", "{8E2D5FBA-1D1A-474D-9660-8415E87323F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Client.Console", "BlazeWS.Client.Console\BlazeWS.Client.Console.csproj", "{6DB045CC-F2AF-4B56-9734-4FCA21116C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +38,6 @@ Global
 		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBAE6263-D858-46B5-BE1E-686C4C23DA39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10091ACD-0248-4ED0-85DB-E860F62467FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC083B13-062D-4F02-8689-CBF020E9972C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC083B13-062D-4F02-8689-CBF020E9972C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC083B13-062D-4F02-8689-CBF020E9972C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +54,14 @@ Global
 		{765BE395-062D-43FD-A910-03E7643FFCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{765BE395-062D-43FD-A910-03E7643FFCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{765BE395-062D-43FD-A910-03E7643FFCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E2D5FBA-1D1A-474D-9660-8415E87323F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E2D5FBA-1D1A-474D-9660-8415E87323F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E2D5FBA-1D1A-474D-9660-8415E87323F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E2D5FBA-1D1A-474D-9660-8415E87323F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB045CC-F2AF-4B56-9734-4FCA21116C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB045CC-F2AF-4B56-9734-4FCA21116C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB045CC-F2AF-4B56-9734-4FCA21116C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB045CC-F2AF-4B56-9734-4FCA21116C7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BlazeWS.Client")]
+[assembly: AssemblyTitle("BlazeWS.Client.Console")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BlazeWS.Client")]
+[assembly: AssemblyProduct("BlazeWS.Client.Console")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("871022f2-031d-446f-bbf2-0eb6498d4c7a")]
+[assembly: Guid("6e8db79f-8ef4-4fce-8d55-c973e62ed730")]
 
 // Version information for an assembly consists of the following four values:
 //
