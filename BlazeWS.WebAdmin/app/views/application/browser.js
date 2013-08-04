@@ -1,6 +1,6 @@
 ﻿define(['jsui/Control', 'jsui/controls/DataTable',
     'text!templates/user/editor.html',
-    'jquery', 'collections/Users'],
+    'jquery', 'collections/Applications'],
     function (Control, DataTable, template, $, Users) {
         return Control.extend({
             ctlDataTable: {},
@@ -10,7 +10,7 @@
 
             OnInitialise: function () {
                 _.bindAll(this, "OnCreateUser");
-                this.setModel('title', 'User Browser');
+                this.setModel('title', 'Application Browser');
                 this.ctlDataTable = new DataTable;
                 this.ctlDataTable.Configure({
                     editable: {
@@ -22,15 +22,15 @@
                     },
                     collection: new Users,
                     columns: [
-                        { Header: { Title: "Name" }, Data: "Name", Index: 1, Editable: { type: 'text' } },
-                        { Header: { Title: "Data" }, Data: "ObjectData", Index: 2, Editable: true }
+                        { Header: { Title: "Name" }, Data: "Name", Index: 1, Editable: { type: 'text' } }
+                       
 
                     ]
                 });
-                jsui.events.on('user:create',
+                jsui.events.on('application:create',
                     _.bind(function (model) {
                         this.ctlDataTable.collection.fetch({
-                            data: { Application: app.Data.System.GetCurrentApplicationId() },
+                          //  data: { Application: app.Data.System.GetCurrentApplicationId() },
                             success: _.bind(function () {
 
                                 // On User Create!!

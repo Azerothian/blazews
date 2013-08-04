@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlazeWS.Shared.Dto
 {
-    public class DtoItem :DtoBase
+    public class DtoItem : DtoBase
     {
         public DtoItem()
         {
