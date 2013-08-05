@@ -20,7 +20,7 @@ namespace BlazeWS.Server.Datasources
         {
             return false;
         }
-        public object Get(string path)
+        public DtoItem Get(string path)
         {
             return false;
         }

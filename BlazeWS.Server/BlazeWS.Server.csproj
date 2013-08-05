@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="DataSources\FileSystemSource.cs" />
     <Compile Include="Logic\ApplicationLogic.cs" />
     <Compile Include="Logic\ItemLogic.cs" />
     <Compile Include="Logic\LogicAbstract.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Managers\AppHostManager.cs" />
     <Compile Include="Managers\AutoMapManager.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\DataSource.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
