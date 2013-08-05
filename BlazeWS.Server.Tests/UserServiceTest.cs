@@ -62,7 +62,7 @@ namespace BlazeWS.Server.Tests
             Assert.AreEqual(userName, actual.Name);
 
             //CLEANUP
-            userService.Any(new DeleteUser() { Id = actual.Id });
+            userService.Any(new DeleteUser() { Id = actual.Id, Application=application.Id });
             
         }
 
@@ -83,7 +83,7 @@ namespace BlazeWS.Server.Tests
             };
 
             var actual = userService.Any(user);
-            var result = userService.Any(new DeleteUser() { Id = actual.Id });
+            var result = userService.Any(new DeleteUser() { Id = actual.Id, Application = application.Id });
             Assert.IsTrue(result.Success);
         }
 

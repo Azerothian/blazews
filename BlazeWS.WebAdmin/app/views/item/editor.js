@@ -45,8 +45,8 @@
                     Id: '[name=Id]',
                     Name: '[name=Name]',
                     Parent: '[name=Parent]',
-                    ObjectType: '[name=ObjectType]',
-                    ObjectData: '[name=ObjectData]'
+                    ObjectType: '[name=ObjectType]'
+                   // ,ObjectData: '[name=ObjectData]'
                 });
                 this.isBound = true;
                 this.jedObjectData.Configure({

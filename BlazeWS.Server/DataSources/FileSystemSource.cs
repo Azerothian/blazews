@@ -9,11 +9,14 @@ namespace BlazeWS.Server.Datasources
 {
     public class FileSystemSource
     {
-
+        
         public string BaseDirectory { get; set; }
 
-        public bool Create(DtoItem data)
+        public bool Create(Item data)
         {
+            
+            
+
             return false;
         }
         public bool Update(DtoItem data)
@@ -22,7 +25,7 @@ namespace BlazeWS.Server.Datasources
         }
         public DtoItem Get(string path)
         {
-            return false;
+            return null;
         }
         public bool Delete(string path)
         {

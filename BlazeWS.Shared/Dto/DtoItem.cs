@@ -18,5 +18,8 @@ namespace BlazeWS.Shared.Dto
         public Guid Application { get; set; }
         public Guid Parent { get; set; }
 
+        public Guid Datasource { get; set; }
+        public Guid ModifiedBy { get; set; }
+
     }
 }

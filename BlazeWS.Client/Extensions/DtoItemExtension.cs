@@ -1,6 +1,7 @@
 ﻿using BlazeWS.Shared.Dto;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -25,10 +26,16 @@ namespace BlazeWS.Client.Extensions
             //{
             // throw new ArgumentException("Type requested to cast to does not match stored content");
             //}
-
-            if (!string.IsNullOrEmpty(item.ObjectData))
+            if (item.ObjectType.StartsWith("application/json;"))
             {
-                return ServiceStack.Text.JsonSerializer.DeserializeFromString<T>(item.ObjectData);
+                if (item.ObjectData != null)
+                {
+                    return ServiceStack.Text.JsonSerializer.DeserializeFromString<T>(item.ObjectData);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Unable to deserialize, stored object type does not start with 'application/json;'");
             }
             return default(T);
         }
@@ -36,12 +43,15 @@ namespace BlazeWS.Client.Extensions
         {
             if (obj != null)
             {
-                item.ObjectType = typeof(T).ToString();
+                item.ObjectType = "application/json;type:" + typeof(T).ToString();
+
+
                 item.ObjectData = ServiceStack.Text.JsonSerializer.SerializeToString(obj);
+
             }
             else
             {
-                item.ObjectData = "";
+                item.ObjectData = null;
                 item.ObjectType = "";
             }
 

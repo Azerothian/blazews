@@ -46,14 +46,27 @@ namespace BlazeWS.Server.Models
         /// </summary>
         /// <value>The object data.</value>
         public virtual string ObjectData { get; set; }
-
-        //public virtual ItemPermissionsFlag SystemPermissions { get; set; } //
+        /// <summary>
+        /// Gets or sets the system permissions
+        /// </summary>
+        /// <value>The object data.</value>
+        public virtual ItemPermissionsFlag SystemPermissions { get; set; } //
 
         /// <summary>
         /// Gets or sets the application.
         /// </summary>
         /// <value>The application.</value>
         public virtual Application Application { get; set; }
+        /// <summary>
+        /// Gets or sets the last user to modify the item.
+        /// </summary>
+        /// <value>The last user to modify the item.</value>
+        public virtual User ModifiedBy { get; set; }
+        /// <summary>
+        /// Gets or sets the datasource.
+        /// </summary>
+        /// <value>The datasource.</value>
+        public virtual Datasource Datasource { get; set; }
         /// <summary>
         /// Gets or sets the parent.
         /// </summary>
@@ -74,8 +87,11 @@ namespace BlazeWS.Server.Models
             model.Override<Item>(map =>
             {
                 map.Map(p=> p.Parent).CustomType(typeof(GuidTypeConverter));
+          
                 //map.HasMany<Item>(p => p.Children).KeyColumn("Parent").LazyLoad();
                 map.Map(p => p.ObjectData).Length(10000);
+         //       map.Map(p => p.ModifiedBy).Nullable();
+             //   map.Map(p => p.Datasource).Nullable();
 
             });
             base.ModelOverride(model);

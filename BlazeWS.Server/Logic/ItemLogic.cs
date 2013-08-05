@@ -43,7 +43,7 @@ namespace BlazeWS.Server.Logic
             var item = AutoMapper.Mapper.Map<Item>(dtoItem);
 
 
-          //  item.SystemPermissions = ItemPermissionsFlag.UserModify | ItemPermissionsFlag.UserRead | ItemPermissionsFlag.UserWrite;
+            item.SystemPermissions = ItemPermissionsFlag.UserModify | ItemPermissionsFlag.UserRead | ItemPermissionsFlag.UserWrite;
             item.Active = true;
             item.DateCreated = DateTime.Now;
             item.DateModified = DateTime.Now;
@@ -106,6 +106,15 @@ namespace BlazeWS.Server.Logic
 
             return LoadAllBy(session, param);
         }
+
+        internal static string GetFullPath(Item item, ISession session, ITransaction tx, string output = "")
+        {
+            return item.Name + "/" + output;
+
+        }
+
+
+
 
         //private static void RefreshCollection(Item item, DtoItem ditem, ISession session)
         //{

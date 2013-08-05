@@ -60,7 +60,7 @@ namespace BlazeWS.Server.Services
                     tx.Commit();
 
                 }
-                catch (Exception ex)
+                catch
                 {
                     tx.Rollback();
                     throw;

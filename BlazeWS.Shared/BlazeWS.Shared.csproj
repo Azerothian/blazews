@@ -55,17 +55,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\DtoDatasource.cs" />
     <Compile Include="Dto\DtoUser.cs" />
-    <Compile Include="Dto\DtoTotalStatistics.cs" />
     <Compile Include="Dto\DtoApplication.cs" />
     <Compile Include="Dto\DtoBase.cs" />
     <Compile Include="Dto\DtoItem.cs" />
-    <Compile Include="Dto\DtoStatistics.cs" />
     <Compile Include="Messages\Applications\DeleteApplication.cs" />
     <Compile Include="Messages\Applications\CreateApplication.cs" />
     <Compile Include="Messages\Applications\GetApplication.cs" />
     <Compile Include="Messages\Applications\ListApplications.cs" />
     <Compile Include="Messages\Applications\UpdateApplication.cs" />
+    <Compile Include="Messages\Datasources\CreateDatasource.cs" />
+    <Compile Include="Messages\Datasources\DeleteDatasource.cs" />
+    <Compile Include="Messages\Datasources\GetDatasource.cs" />
+    <Compile Include="Messages\Datasources\ListDatasources.cs" />
+    <Compile Include="Messages\Datasources\UpdateDatasource.cs" />
     <Compile Include="Messages\Users\CreateUser.cs" />
     <Compile Include="Messages\Users\DeleteUser.cs" />
     <Compile Include="Messages\Users\GetUser.cs" />
@@ -76,8 +80,6 @@
     <Compile Include="Messages\Items\GetItem.cs" />
     <Compile Include="Messages\Items\ListItemChildren.cs" />
     <Compile Include="Messages\Items\UpdateItem.cs" />
-    <Compile Include="Messages\Statistics\GetStatistics.cs" />
-    <Compile Include="Messages\Statistics\GetTotalStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

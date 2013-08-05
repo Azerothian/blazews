@@ -12,7 +12,12 @@ namespace BlazeWS.Server.Tests
 {
     public class TestUtils
     {
-
+        public static byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
         public static void Initialise(string testApplicationName, ApplicationService appService)
         {
             Illisian.Nhibernate.Database.Context.Configure(typeof(Application).Assembly);

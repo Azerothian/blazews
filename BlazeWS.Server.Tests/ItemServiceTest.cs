@@ -76,7 +76,7 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = userName,
-                
+                ObjectType = "application/json;",
                 ObjectData = " { Password:'1234567890', GoogleAuth: '123123' }"
             };
 
@@ -99,7 +99,7 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = name,
-                ObjectType = "String",
+                ObjectType = "application/json;",
                 ObjectData = " { Password:'1234567890', GoogleAuth: '123123' }"
             };
             DtoItem expected = itemService.Any(newitem);
@@ -123,8 +123,8 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = name,
-                ObjectType = "String",
-                ObjectData = " { Password:'1234567890', GoogleAuth: '123123' }"
+                ObjectType = "application/json;",
+                ObjectData = "{'Password':'1234567890', 'GoogleAuth': '123123' }"
             };
 
             DtoItem newentry = itemService.Any(newitem);
