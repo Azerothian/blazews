@@ -66,7 +66,7 @@ namespace BlazeWS.Server.Logic
 		public static IEnumerable<T> LoadAllBy(ISession session, params Func<T, bool>[] paramArray)
 		{
 			IEnumerable<T> query = from v in session.Query<T>() where v.Active select v;
-
+            
 			foreach (var v in paramArray)
 			{
 				query = query.Where(v);

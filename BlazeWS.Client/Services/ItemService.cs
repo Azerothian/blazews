@@ -28,9 +28,9 @@ namespace BlazeWS.Client
             return AutoMapper.Mapper.Map<DtoItem>(response);
         }
 
-        public IEnumerable<DtoItem> GetChildren(Guid application, Guid? parentId = null)
+        public IEnumerable<DtoItem> GetChildren(Guid application, string path = null)
         {
-            return _client.Send<ListItemsResponse>(new ListItemChildren() {  ParentItem = parentId ?? Guid.Empty, Application = application }).Items;
+            return _client.Send<ListItemsResponse>(new ListItemChildren() {  Path = path, Application = application }).Items;
         }
 
         public bool Update(DtoItem dto)
@@ -38,9 +38,9 @@ namespace BlazeWS.Client
             var msg = AutoMapper.Mapper.Map<DtoItem, UpdateItem>(dto);
             return _client.Send<UpdateItemResponse>(msg).Success;
         }
-        public bool Delete(Guid ApplicationId, Guid id)
+        public bool Delete(Guid ApplicationId, string path)
         {
-            return _client.Send<DeleteItemResponse>(new DeleteItem() { Id = id, Application = ApplicationId }).Success;
+            return _client.Send<DeleteItemResponse>(new DeleteItem() { Path = path, Application = ApplicationId }).Success;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using BlazeWS.Shared.Dto;
 using ServiceStack.ServiceHost;
+using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace BlazeWS.Shared.Messages.Users
 
         public Guid Application { get; set; }
     }
-    public class ListUsersResponse
+    public class ListUsersResponse : IHasResponseStatus
     {
         public IEnumerable<DtoUser> Users { get; set; }
+
+        public ResponseStatus ResponseStatus { get; set; }
     }
 
 

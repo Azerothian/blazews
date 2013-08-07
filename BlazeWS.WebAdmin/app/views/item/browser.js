@@ -1,51 +1,58 @@
-﻿define(['underscore', 'jsui/controls/Templated',
+﻿define(['underscore', 'jsui/controls/Templated', 'jsui/controls/Tree.jstree',
     'model/Item',
     'text!templates/item/browser.html',
     'collections/Items',
     'jquery',
     'jquery-ui'],
-    function (_, TemplateControl, ItemModel, template, Items, $) {
+    function (_, TemplateControl, Tree, ItemModel, template, Items, $) {
         return TemplateControl.extend({
             collection: {},
             events: {
-                'click button.btnCreateNewItem': 'btnCreateNewItem_OnClick'
+                //'click button#btnSave': 'btnSave_OnClick'
             },
+
             OnInitialise: function () {
-                _.bindAll(this, 'btnCreateNewItem_OnClick', 'btnCancel_OnClick'); // fixes loss of context for 'this' within methods
-
-                //Need to get application id and root item
-
-                this.collection = new Items;
-                
-
+                _.bindAll(this, 'btnClose_OnClick'); // fixes loss of context for 'this' within methods
                 this.template = template;
-                
-                console.log("[/view/item/browser/OnInitialise]", this);
+                this.collection = new Items;
+                //   this.model.
             },
             OnCreateControl: function (name, control) {
+
                 if (name == "ctlItemTree") {
-                   
 
                     control.Configure({
                         TextField: 'Name',
                         collection: this.collection,
                         PrimaryKey: 'Id',
                         ParentKey: 'Parent',
-                        theme: {
-                            open: 'ui-icon-triangle-1-se',
-                            closed: 'ui-icon-triangle-1-e',
-
-
-                        },
                         Editable: false,
-                        Selectable: {
-                            OnSelect: _.bind(function (model) {
-                                
+                        Events: {
+                            Select: _.bind(function (model) {
+                                $(this.el).find('.ctlItemEditor').show();
                                 var itemEditor = this.getChildByName('ctlItemEditor');
-                                console.log("Browser OnSelect", {model: model, itemeditor: itemEditor });
+                                console.log("Browser Select", { model: model, itemeditor: itemEditor });
                                 itemEditor.SetDataSource(model);
 
+                            }, this),
+                            BeforeCreate: _.bind(function (create) {
+                                create.model.set("Application", app.Data.System.GetCurrentApplicationId());
+                            }, this),
+                            Expand: _.bind(function(id, collection){ 
+
+                                collection.GetChildren({
+                                    data: {
+                                        ParentItem: id,
+                                        Application: app.Data.System.GetCurrentApplicationId()
+                                    }, success: _.bind(function () {
+
+
+                                    }, this)
+
+                                });
+
                             }, this)
+
 
                         }
                     });
@@ -63,29 +70,41 @@
                     });
                 }
 
+                //                this.$el.append("");
+                //this.$el.html();
+
             },
             OnAfterRender: function () {
 
+
+                //this.model.title = "Create Application";
+
+                //console.log("[/view/application/create/OnAfterRender]", this);
+                //this.modelBinder.bind(this.DataSource, this.el);
+
+                //if (this.DataSource.get('Id')) {
+                //    this.model.title = "Edit Application";
+                //    this.DataSource.fetch();
+                //}
                 $(this.el).find('.btnCreateNewItem').button();
 
-                $(this.el).dialog({
-                    width: 650,
-                    title: "Item Browser"
+
+                this.$el.dialog({
+                    width: 750,
+                    height: 550,
+                    title: "Item Browser",
+                    close: this.btnClose_OnClick,
+
                 });
 
 
 
             },
             OnDispose: function () {
+                //   this.modelBinder.unbind();
             },
-
-            btnCreateNewItem_OnClick: function () {
-                //Get Selected Item Id
-                //Fire Create Function
-                app.Logic.Router.loadView("item", "create");
-
-            },
-            btnCancel_OnClick: function () {
+            btnClose_OnClick: function () {
+                // app.Data.Applications.remove(this.DataSource);
                 this.$el.dialog("close");
                 this.dispose();
 

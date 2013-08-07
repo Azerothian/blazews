@@ -59,9 +59,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\item\browser.jstree.html" />
+    <Content Include="app\collections\DataSources.js" />
+    <Content Include="app\model\DataSource.js" />
+    <Content Include="app\templates\application\browser.html" />
+    <Content Include="app\templates\application\editor.html" />
+    <Content Include="app\templates\item\browser.html" />
     <Content Include="app\views\application\browser.js" />
-    <Content Include="app\views\item\browser.jstree.js" />
+    <Content Include="app\views\application\editor.js" />
+    <Content Include="app\views\item\browser.js" />
     <Content Include="css\main.css" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -78,8 +83,8 @@
     <Content Include="app\views\application\selector.js" />
     <Content Include="app\views\application\create.js" />
     <Content Include="app\views\DesktopView.js" />
-    <Content Include="app\views\item\browser.js" />
-    <Content Include="app\views\item\browser.old.js" />
+    <Content Include="app\views\item\old\__browser.js" />
+    <Content Include="app\views\item\old\browser.old.js" />
     <Content Include="app\views\item\editor.js" />
     <Content Include="app\views\item\create.js" />
     <Content Include="app\views\LoginView.js" />
@@ -1713,6 +1718,7 @@
     <Content Include="lib\jsui\controls\DataTable.js" />
     <Content Include="lib\jsui\controls\datatables.DataTable.js" />
     <Content Include="lib\jsui\controls\JsonEditor.js" />
+    <Content Include="lib\jsui\controls\Listbox.js" />
     <Content Include="lib\jsui\controls\Templated.js" />
     <Content Include="lib\jsui\controls\Tree.js" />
     <Content Include="lib\jsui\controls\Tree.jstree.js" />
@@ -2308,7 +2314,7 @@
     <Content Include="app\templates\auth\login.html" />
     <Content Include="app\templates\desktop.html" />
     <Content Include="app\templates\dialog.html" />
-    <Content Include="app\templates\item\browser.html" />
+    <Content Include="app\templates\item\old\__browser.html" />
     <Content Include="app\templates\item\create.html" />
     <Content Include="app\templates\item\editor.html" />
     <Content Include="app\templates\user\create.html" />

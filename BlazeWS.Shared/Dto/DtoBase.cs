@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceStack.ServiceInterface.ServiceModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,5 @@ namespace BlazeWS.Shared.Dto
         public bool Active { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-
     }
 }

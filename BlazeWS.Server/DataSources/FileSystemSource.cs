@@ -1,35 +1,40 @@
 ﻿using BlazeWS.Server.Models;
 using BlazeWS.Shared.Dto;
+using BlazeWS.Shared.Messages.Items;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
 namespace BlazeWS.Server.Datasources
 {
-    public class FileSystemSource
+    public class FileSystemSource : IDataSource
     {
-        
         public string BaseDirectory { get; set; }
+        public CreateItemResponse Create(CreateItem action)
+        {
+            throw new NotImplementedException();
+        }
 
-        public bool Create(Item data)
+        public DeleteItemResponse Delete(DeleteItem action)
         {
-            
-            
+            throw new NotImplementedException();
+        }
 
-            return false;
-        }
-        public bool Update(DtoItem data)
+        public GetItemResponse Get(GetItem action)
         {
-            return false;
+            throw new NotImplementedException();
         }
-        public DtoItem Get(string path)
+
+        public ListItemsResponse List(ListItemChildren action)
         {
-            return null;
+            throw new NotImplementedException();
         }
-        public bool Delete(string path)
+
+        public UpdateItemResponse Update(UpdateItem action)
         {
-            return false;
+            throw new NotImplementedException();
         }
     }
 }

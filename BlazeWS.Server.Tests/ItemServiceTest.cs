@@ -39,7 +39,7 @@ namespace BlazeWS.Server.Tests
             DtoItem i = itemService.Any(new CreateItem()
             {
                 Name = "New Item",
-                Parent = _application.BaseItem,
+                Path = "/root/New Item",
                 Application = _application.Id
 
             });
@@ -53,11 +53,11 @@ namespace BlazeWS.Server.Tests
             var i = itemService.Any(new CreateItem()
             {
                 Name = "New Child Item",
-                Parent = _application.BaseItem,
+                Path = "/root/New Child Item",
                 Application = _application.Id,
             });
           //  var item = itemService.Any(new GetItem() { Application = application.Id, Id = application.BaseItem });
-            var children = itemService.Any(new ListItemChildren() { ParentItem = _application.BaseItem, Application = _application.Id });
+            var children = itemService.Any(new ListItemChildren() {  Path = "/root", Application = _application.Id });
 
 
             Assert.IsTrue(children.Items.Count() > 0);
@@ -76,13 +76,13 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = userName,
-                ObjectType = "application/json;",
-                ObjectData = " { Password:'1234567890', GoogleAuth: '123123' }"
+                JsonDataType = "application/json;",
+                JsonData = " { 'Password':'1234567890', 'GoogleAuth': '123123' }"
             };
 
             var actual = itemService.Any(newitem);
 
-            var result = itemService.Any(new DeleteItem() { Id = actual.Id, Application = actual.Application });
+            var result = itemService.Any(new DeleteItem() { Path = newitem.Path, Application = actual.Application });
             Assert.IsTrue(result.Success);
         }
 
@@ -99,8 +99,8 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = name,
-                ObjectType = "application/json;",
-                ObjectData = " { Password:'1234567890', GoogleAuth: '123123' }"
+                JsonDataType = "application/json;",
+                JsonData = " { Password:'1234567890', GoogleAuth: '123123' }"
             };
             DtoItem expected = itemService.Any(newitem);
             DtoItem actual = itemService.Any(new GetItem() { Id = expected.Id, Application = application.Id });
@@ -123,8 +123,8 @@ namespace BlazeWS.Server.Tests
             {
                 Application = application.Id,
                 Name = name,
-                ObjectType = "application/json;",
-                ObjectData = "{'Password':'1234567890', 'GoogleAuth': '123123' }"
+                JsonDataType = "application/json;",
+                JsonData = "{'Password':'1234567890', 'GoogleAuth': '123123' }"
             };
 
             DtoItem newentry = itemService.Any(newitem);
@@ -137,7 +137,7 @@ namespace BlazeWS.Server.Tests
                 DateModified = newentry.DateModified,
                 Id = newentry.Id,
                 Name = updatedName,
-                ObjectData = newentry.ObjectData
+                JsonData = newentry.JsonData
             };
 
             var updated = itemService.Any(update);

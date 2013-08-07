@@ -1,18 +1,23 @@
 ﻿using BlazeWS.Shared.Dto;
 using ServiceStack.ServiceHost;
+using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BlazeWS.Shared.Messages.Datasources
+namespace BlazeWS.Shared.Messages.DataSources
 {
 
-    [Route("/Datasources", Verbs="GET")]
-    public class ListDatasources : IReturn<ListDatasourcesResponse> { }
+    [Route("/datasources", Verbs="GET")]
+    public class ListDataSources : IReturn<ListDataSourcesResponse> { 
+        public Guid ApplicationId { get; set; } 
+    }
 
-    public class ListDatasourcesResponse
+    public class ListDataSourcesResponse : IHasResponseStatus
     {
-        public IEnumerable<DtoDatasource> Datasources { get; set; }
+        public IEnumerable<DtoDataSource> Data { get; set; }
+
+        public ResponseStatus ResponseStatus { get; set; }
     }
 }

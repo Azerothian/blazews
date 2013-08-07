@@ -53,7 +53,7 @@ namespace BlazeWS.Server.Logic
             application.DateModified = DateTime.Now;
             application.Save(session, tx);
 
-            var item = ItemLogic.CreateFromDto(session, tx, new Shared.Dto.DtoItem()
+            var item = ItemLogic.Create(session, tx, new Shared.Dto.DtoItem()
             {
                 Name = "root"
             });
@@ -62,7 +62,7 @@ namespace BlazeWS.Server.Logic
           //  item.SystemPermissions = ItemPermissionsFlag.UserNone;
             item.Save(session, tx);
 
-            application.BaseItem = item.Id;
+            //application.BaseItem = item.Id;
             application.Save(session, tx);
 
             return application;

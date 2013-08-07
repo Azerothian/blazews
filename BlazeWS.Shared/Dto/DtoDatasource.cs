@@ -5,13 +5,13 @@ using System.Text;
 
 namespace BlazeWS.Shared.Dto
 {
-    public class DtoDatasource : DtoBase
+    public class DtoDataSource : DtoBase
     {
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public virtual string Name { get; set; }
-        
+        public string Name { get; set; }
+        public string Path { get; set; }
+        public string Type { get; set; }
+        public Guid Application { get; set; }
+        public bool IsPrimarySource { get; set; }
+        public string JsonData { get; set; }
     }
 }

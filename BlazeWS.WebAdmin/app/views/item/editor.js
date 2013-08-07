@@ -25,7 +25,7 @@
                     if (this.DataSource) {
                         this.jedObjectData.Configure({
                             DataSource: this.DataSource,
-                            Key: "ObjectData"
+                            Key: "JsonData"
 
                         });
                     }
@@ -45,13 +45,15 @@
                     Id: '[name=Id]',
                     Name: '[name=Name]',
                     Parent: '[name=Parent]',
-                    ObjectType: '[name=ObjectType]'
+                    JsonDataType: '[name=JsonDataType]',
+                    Type: { selector: '[name=Type]' }
                    // ,ObjectData: '[name=ObjectData]'
                 });
                 this.isBound = true;
                 this.jedObjectData.Configure({
                     DataSource: this.DataSource,
-                    Key: "ObjectData"
+                    Key: "JsonData",
+                    Stringify: true
                 });
             },
             OnAfterRender: function () {

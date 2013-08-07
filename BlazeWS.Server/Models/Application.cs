@@ -32,11 +32,6 @@ namespace BlazeWS.Server.Models
         /// </summary>
         /// <value>The name.</value>
         public virtual string Name { get; set; }
-        /// <summary>
-        /// Gets or sets the base item.
-        /// </summary>
-        /// <value>The base item.</value>
-        public virtual Guid BaseItem { get; set; }
     }
 
 

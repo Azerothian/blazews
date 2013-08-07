@@ -16,7 +16,6 @@ using BlazeWS.Server.Logic;
 using BlazeWS.Server.Models;
 using BlazeWS.Shared.Dto;
 using BlazeWS.Shared.Messages.Applications;
-using BlazeWS.Shared.Messages.Datasources;
 using BlazeWS.Shared.Messages.Items;
 using BlazeWS.Shared.Messages.Users;
 using Illisian.Nhibernate;
@@ -63,12 +62,12 @@ namespace BlazeWS.Server.Managers
 
 
             //Item Mappings            
-            IdMappings<Datasource>();
-            DtoMappings<Datasource, DtoDatasource>();
-            DtoMappings<Datasource, CreateDatasource>();
-            DtoMappings<Datasource, UpdateDatasource>();
-            DtoMappings<Datasource, CreateDatasourceResponse>();
-            DtoMappings<Datasource, GetDatasourceResponse>();
+            IdMappings<ItemData>();
+            DtoMappings<ItemData, DtoItemData>();
+            //DtoMappings<ItemData, CreateItemData>();
+            //DtoMappings<ItemData, UpdateItemData>();
+            //DtoMappings<ItemData, CreateItemData>();
+            //DtoMappings<ItemData, GetItemData>();
         }
 
 

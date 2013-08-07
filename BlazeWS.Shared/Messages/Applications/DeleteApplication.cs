@@ -1,4 +1,5 @@
 ﻿using ServiceStack.ServiceHost;
+using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace BlazeWS.Shared.Messages.Applications
     {
         public Guid Id { get; set; }
     }
-    public class DeleteApplicationResponse
+    public class DeleteApplicationResponse : IHasResponseStatus
     {
         public bool Success { get; set; }
+
+        public ResponseStatus ResponseStatus { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿// ***********************************************************************
+﻿using BlazeWS.Server.Enums;
+// ***********************************************************************
 // Assembly         : BlazeWS.Server
 // Author           : Matthew Mckenzie
 // Created          : 07-01-2013
@@ -36,37 +37,54 @@ namespace BlazeWS.Server.Models
         /// </summary>
         /// <value>The name.</value>
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        /// <value>The type.</value>
+        public virtual int Type { get; set; } // enum ItemType
+
+        /// <summary>
+        /// Gets or sets the path.
+        /// </summary>
+        /// <value>The path.</value>
+        public virtual string Path { get; set; }
+
         /// <summary>
         /// Gets or sets the type of the object.
         /// </summary>
         /// <value>The type of the object.</value>
-        public virtual string ObjectType { get; set; }
+        public virtual string JsonDataType { get; set; }
+
         /// <summary>
-        /// Gets or sets the object data.
+        /// Gets or sets the object data. 
         /// </summary>
         /// <value>The object data.</value>
-        public virtual string ObjectData { get; set; }
+        public virtual string JsonData { get; set; }
         /// <summary>
         /// Gets or sets the system permissions
         /// </summary>
         /// <value>The object data.</value>
-        public virtual ItemPermissionsFlag SystemPermissions { get; set; } //
-
+        public virtual int Permissions { get; set; } // enum ItemPermissions
+       
         /// <summary>
         /// Gets or sets the application.
         /// </summary>
         /// <value>The application.</value>
         public virtual Application Application { get; set; }
+        
         /// <summary>
         /// Gets or sets the last user to modify the item.
         /// </summary>
         /// <value>The last user to modify the item.</value>
         public virtual User ModifiedBy { get; set; }
+        
         /// <summary>
         /// Gets or sets the datasource.
         /// </summary>
         /// <value>The datasource.</value>
-        public virtual Datasource Datasource { get; set; }
+        public virtual ItemData ItemData { get; set; }
+
         /// <summary>
         /// Gets or sets the parent.
         /// </summary>
@@ -89,35 +107,13 @@ namespace BlazeWS.Server.Models
                 map.Map(p=> p.Parent).CustomType(typeof(GuidTypeConverter));
           
                 //map.HasMany<Item>(p => p.Children).KeyColumn("Parent").LazyLoad();
-                map.Map(p => p.ObjectData).Length(10000);
+                map.Map(p => p.JsonData).Length(10000);
          //       map.Map(p => p.ModifiedBy).Nullable();
-             //   map.Map(p => p.Datasource).Nullable();
+               // map.Map(p => p.Datasource).Column("DatasourceId").Nullable();
 
             });
             base.ModelOverride(model);
         }
 
-    }
-    /// <summary>
-    /// Enum ItemPermissionsFlag
-    /// </summary>
-    public enum ItemPermissionsFlag
-    {
-        /// <summary>
-        /// The user none
-        /// </summary>
-        UserNone,
-        /// <summary>
-        /// The user read
-        /// </summary>
-        UserRead,
-        /// <summary>
-        /// The user write
-        /// </summary>
-        UserWrite,
-        /// <summary>
-        /// The user modify
-        /// </summary>
-        UserModify
     }
 }

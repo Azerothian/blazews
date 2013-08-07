@@ -1,80 +1,64 @@
-﻿define(['jsui/Control', 'jsui/controls/DataTable',
-    'text!templates/user/editor.html',
-    'jquery', 'collections/Applications'],
-    function (Control, DataTable, template, $, Users) {
-        return Control.extend({
-            ctlDataTable: {},
+﻿define(['underscore', 'jquery', 'jsui/controls/Templated',
+    'text!templates/application/browser.html', 'collections/Applications'],
+    function (_, $, TemplateControl, template, Applications) {
+        return TemplateControl.extend({
+            ctlApplicationEditor: {},
+            ctlApplicationsList: {},
+            // collection: {},
             events: {
-
+                //'click button#btnSave': 'btnSave_OnClick'
             },
 
             OnInitialise: function () {
-                _.bindAll(this, "OnCreateUser");
-                this.setModel('title', 'Application Browser');
-                this.ctlDataTable = new DataTable;
-                this.ctlDataTable.Configure({
-                    editable: {
-                        Buttons: {
-                            Delete: true,
-                            Commit: true,
-                            Save: true
-                        }
-                    },
-                    collection: new Users,
-                    columns: [
-                        { Header: { Title: "Name" }, Data: "Name", Index: 1, Editable: { type: 'text' } }
-                       
-
-                    ]
-                });
-                jsui.events.on('application:create',
-                    _.bind(function (model) {
-                        this.ctlDataTable.collection.fetch({
-                          //  data: { Application: app.Data.System.GetCurrentApplicationId() },
-                            success: _.bind(function () {
-
-                                // On User Create!!
-                            }, this)
-                        });
-                    }, this),
-                    this);
-
-                this.ctlDataTable.collection.fetch({
-                    data: { Application: app.Data.System.GetCurrentApplicationId() },
-                    success: _.bind(function () {
-                        this.addChild("ctlDataTable", this.ctlDataTable);
-                    }, this)
-                });
-
+                //_.bindAll(this, 'btnClose_OnClick'); // fixes loss of context for 'this' within methods
+                this.template = template;
+                this.collection = new Applications;
+                //   this.model.
             },
-            OnRender: function () {
-                this.btnCreate = $("<input type='button'/>");
-                $(this.el).append(this.btnCreate);
-                $(this.btnCreate).button();
-                $(this.btnCreate).click(_.bind(function () {
-                    app.Logic.Router.loadView("user", "create");
+            OnCreateControl: function (name, control) {
 
-                }, this));
-                $(this.btnCreate).attr('value', 'Create New User');
+                if (name == "ctlApplicationEditor") {
 
 
-            }, OnCreateUser: function (data) {
+                    this.ctlApplicationEditor = control;
+                }
 
+                if (name == "ctlApplicationsList") {
+                    control.Configure({
+                        collection: this.collection,
+                        Key: "Id",
+                        Text: "Name",
+                        Value: "Id",
+                        Events: { 
+                            OnSelect: function (model) {
+                                this.ctlApplicationEditor.SetDataSource(model);
+                            }
+                        }
+                    });
+                    control.collection.fetch({
+                        data: {
+
+                        }, success: function () {
+
+                        }
+
+                    });
+                    this.ctlApplicationsList = control;
+                }
             },
             OnAfterRender: function () {
-                this.$el.dialog({
-                    title: this.getModel('title'),
-                    width: 550,
-                    height: 350,
-                    close: this.dispose
+                $(this.el).dialog({
+                    width: 750,
+                    height: 550,
+                    title: "Item Browser",
+                    //close: this.btnClose_OnClick,
+
                 });
-
-
             },
             OnDispose: function () {
-                jsui.events.off(null, null, this);
-                this.$el.dialog("close");
+                //   this.modelBinder.unbind();
             }
+
 
         });
     });

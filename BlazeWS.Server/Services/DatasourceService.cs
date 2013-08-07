@@ -6,7 +6,7 @@
 // Last Modified By : Matthew Mckenzie
 // Last Modified On : 07-01-2013
 // ***********************************************************************
-// <copyright file="DatasourceService.cs" company="">
+// <copyright file="DataSourceService.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -14,7 +14,7 @@
 using BlazeWS.Server.Logic;
 using BlazeWS.Server.Models;
 using BlazeWS.Shared.Dto;
-using BlazeWS.Shared.Messages.Datasources;
+using BlazeWS.Shared.Messages.DataSources;
 using ServiceStack.ServiceInterface;
 using System;
 using System.Collections.Generic;
@@ -24,26 +24,26 @@ using System.Web;
 namespace BlazeWS.Server.Services
 {
     /// <summary>
-    /// Class DatasourceService
+    /// Class DataSourceService
     /// </summary>
     [Authenticate]
-    public class DatasourceService : Service
+    public class DataSourceService : Service
     {
         /// <summary>
-        /// Create a New Datasource
+        /// Create a New DataSource
         /// </summary>
         /// <param name="i">The i.</param>
-        /// <returns>CreateDatasourceResponse.</returns>
-        public CreateDatasourceResponse Any(CreateDatasource i)
+        /// <returns>CreateDataSourceResponse.</returns>
+        public CreateDataSourceResponse Any(CreateDataSource i)
         {
-            //CREATE NEW Datasource
+            //CREATE NEW DataSource
             var session = Illisian.Nhibernate.Database.Context.GetSession();
-            Datasource Datasource = null;
+            DataSource DataSource = null;
             using (var tx = session.BeginTransaction())
             {
                 try
                 {
-                    Datasource = DatasourceLogic.CreateFromDto(session, tx, i as DtoDatasource);
+                    DataSource = DataSourceLogic.CreateFromDto(session, tx, i as DtoDataSource);
                     tx.Commit();
 
                 }
@@ -54,29 +54,29 @@ namespace BlazeWS.Server.Services
                     throw;
                 }
             }
-            return AutoMapper.Mapper.Map<CreateDatasourceResponse>(Datasource);
+            return AutoMapper.Mapper.Map<CreateDataSourceResponse>(DataSource);
         }
         /// <summary>
-        /// Gets a Datasource
+        /// Gets a DataSource
         /// </summary>
-        /// <param name="app">The app.</param>
-        /// <returns>GetDatasourceResponse.</returns>
-        public GetDatasourceResponse Any(GetDatasource app)
+        /// <param name="action">The app.</param>
+        /// <returns>GetDataSourceResponse.</returns>
+        public GetDataSourceResponse Any(GetDataSource action)
         {
-            Datasource a = null;
+            DataSource a = null;
             var session = Illisian.Nhibernate.Database.Context.GetSession();
-            if (app.Id != Guid.Empty)
+            if (action.Id != Guid.Empty)
             {
-                a = DatasourceLogic.LoadBy(session, p => p.Id == app.Id);
+                a = DataSourceLogic.LoadBy(session, p => p.Id == action.Id && p.Application.Id == action.ApplicationId);
             }
-            else if(!string.IsNullOrEmpty(app.DatasourceName))
+            else if(!string.IsNullOrEmpty(action.Name))
             {
-                a = DatasourceLogic.LoadBy(session, p => p.Name == app.DatasourceName);
+                a = DataSourceLogic.LoadBy(session, p => p.Name == action.Name && p.Application.Id == action.ApplicationId);
 
             }
             if (a != null)
             {
-                return AutoMapper.Mapper.Map<GetDatasourceResponse>(a);
+                return AutoMapper.Mapper.Map<GetDataSourceResponse>(a);
             }
 
             return null;
@@ -86,19 +86,18 @@ namespace BlazeWS.Server.Services
         /// <summary>
         /// Anies the specified app.
         /// </summary>
-        /// <param name="app">The app.</param>
-        /// <returns>DtoDatasource[][].</returns>
-        public ListDatasourcesResponse Any(ListDatasources app)
+        /// <param name="action">The app.</param>
+        /// <returns>DtoDataSource[][].</returns>
+        public ListDataSourcesResponse Any(ListDataSources action)
         {
-            IEnumerable<Datasource> _apps;
+            IEnumerable<DataSource> _apps;
             var session = Illisian.Nhibernate.Database.Context.GetSession();
 
-            _apps = DatasourceLogic.LoadAllBy(session).ToArray();
+            _apps = DataSourceLogic.LoadAllBy(session, p=>p.Application.Id == action.ApplicationId).ToArray();
 
-            ListDatasourcesResponse response = new ListDatasourcesResponse()
+            ListDataSourcesResponse response = new ListDataSourcesResponse()
             {
-                Datasources = AutoMapper.Mapper.Map<IEnumerable<DtoDatasource>>(_apps)
-
+                Data = AutoMapper.Mapper.Map<IEnumerable<DtoDataSource>>(_apps)
             };
 
             return response;
@@ -106,24 +105,24 @@ namespace BlazeWS.Server.Services
         }
 
         /// <summary>
-        /// Update Datasource
+        /// Update DataSource
         /// </summary>
         /// <param name="app">The app.</param>
-        /// <returns>UpdateDatasourceResponse.</returns>
-        public UpdateDatasourceResponse Any(UpdateDatasource app)
+        /// <returns>UpdateDataSourceResponse.</returns>
+        public UpdateDataSourceResponse Any(UpdateDataSource app)
         {
             var result = false;
             var session = Illisian.Nhibernate.Database.Context.GetSession();
 
-            var Datasource = AutoMapper.Mapper.Map<Datasource>(app);
+            var DataSource = AutoMapper.Mapper.Map<DataSource>(app);
 
-            if (Datasource != null && Datasource.Id != Guid.Empty)
+            if (DataSource != null && DataSource.Id != Guid.Empty)
             {
                 using (var tx = session.BeginTransaction())
                 {
                     try
                     {
-                        DatasourceLogic.Save(Datasource, session, tx);
+                        DataSourceLogic.Save(DataSource, session, tx);
                         tx.Commit();
                     }
                     catch
@@ -136,25 +135,25 @@ namespace BlazeWS.Server.Services
                 result = true;
 
             }
-            return new UpdateDatasourceResponse() { Success = result };
+            return new UpdateDataSourceResponse() { Success = result };
         }
         /// <summary>
         /// Anies the specified app.
         /// </summary>
         /// <param name="app">The app.</param>
-        /// <returns>DeleteDatasourceResponse.</returns>
-        public DeleteDatasourceResponse Any(DeleteDatasource app)
+        /// <returns>DeleteDataSourceResponse.</returns>
+        public DeleteDataSourceResponse Any(DeleteDataSource app)
         {
             var result = false;
             var session = Illisian.Nhibernate.Database.Context.GetSession();
-            var a = DatasourceLogic.LoadBy(session, p => p.Id == app.Id);
+            var a = DataSourceLogic.LoadBy(session, p => p.Id == app.Id && app.ApplicationId == p.Application.Id);
             if (a != null)
             {
                 using (var tx = session.BeginTransaction())
                 {
                     try
                     {
-                        DatasourceLogic.Delete(a, session, tx);
+                        DataSourceLogic.Delete(a, session, tx);
                         tx.Commit();
                     }
                     catch
@@ -165,7 +164,7 @@ namespace BlazeWS.Server.Services
                 }
                 result = true;
             }
-            return new DeleteDatasourceResponse() { Success = result };
+            return new DeleteDataSourceResponse() { Success = result };
 
         }
     }

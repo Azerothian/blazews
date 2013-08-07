@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\DtoDatasource.cs" />
+    <Compile Include="Dto\DtoDataSource.cs" />
+    <Compile Include="Dto\DtoItemData.cs" />
     <Compile Include="Dto\DtoUser.cs" />
     <Compile Include="Dto\DtoApplication.cs" />
     <Compile Include="Dto\DtoBase.cs" />
@@ -65,11 +66,11 @@
     <Compile Include="Messages\Applications\GetApplication.cs" />
     <Compile Include="Messages\Applications\ListApplications.cs" />
     <Compile Include="Messages\Applications\UpdateApplication.cs" />
-    <Compile Include="Messages\Datasources\CreateDatasource.cs" />
-    <Compile Include="Messages\Datasources\DeleteDatasource.cs" />
-    <Compile Include="Messages\Datasources\GetDatasource.cs" />
-    <Compile Include="Messages\Datasources\ListDatasources.cs" />
-    <Compile Include="Messages\Datasources\UpdateDatasource.cs" />
+    <Compile Include="Messages\DataSources\CreateDataSource.cs" />
+    <Compile Include="Messages\DataSources\DeleteDataSource.cs" />
+    <Compile Include="Messages\DataSources\GetDataSource.cs" />
+    <Compile Include="Messages\DataSources\ListDataSources.cs" />
+    <Compile Include="Messages\DataSources\UpdateDataSource.cs" />
     <Compile Include="Messages\Users\CreateUser.cs" />
     <Compile Include="Messages\Users\DeleteUser.cs" />
     <Compile Include="Messages\Users\GetUser.cs" />

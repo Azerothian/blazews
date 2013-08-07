@@ -1,5 +1,6 @@
 ﻿using BlazeWS.Shared.Dto;
 using ServiceStack.ServiceHost;
+using ServiceStack.ServiceInterface.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace BlazeWS.Shared.Messages.Applications
     public class UpdateApplication : DtoApplication,IReturn<UpdateApplicationResponse>
     {
     }
-    public class UpdateApplicationResponse
+    public class UpdateApplicationResponse : IHasResponseStatus
     {
         public bool Success { get; set; }
+
+        public ResponseStatus ResponseStatus { get; set; }
     }
 }

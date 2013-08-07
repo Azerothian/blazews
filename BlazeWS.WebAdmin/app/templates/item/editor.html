@@ -3,21 +3,26 @@
     <input id="Id" name="Id" type="text" disabled="disabled" />
 </div>
 <div>
-    <label class="label">Name</label>
+    <label class="label" for="Name">Name</label>
     <input name="Name" type="text" />
 </div>
 <div>
-    <label class="label">Parent</label>
+    <label class="label" for="Type">Type</label>
+    <select name="Type">
+        <option value="0">Generic</option>
+        <option value="1">Datasource</option>
+    </select>
+</div>
+
+
+<div>
+    <label class="label" for="Parent">Parent</label>
     <input name="Parent" type="text" />
 </div>
 <div>
-    <label class="label">ObjectType</label>
-    <input name="ObjectType" type="text" />
+    <label class="label" for="JsonDataType">JsonDataType</label>
+    <input name="JsonDataType" type="text" />
 </div>
-<!--<div>
-    <label class="label">ObjectData</label>
-    <input class="txtObjectData" name="ObjectData" type="text" />
-</div>-->
 
 <jsui name="jedObjectData" require="jsui/controls/JsonEditor" />
 

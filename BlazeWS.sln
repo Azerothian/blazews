@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{849333
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Tests", "BlazeWS.Server.Tests\BlazeWS.Server.Tests.csproj", "{CC083B13-062D-4F02-8689-CBF020E9972C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.WebAdmin", "BlazeWS.WebAdmin\BlazeWS.WebAdmin.csproj", "{8B8A150F-A0DB-42F1-81A0-579D47DEC371}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.WebAdmin", "BlazeWS.WebAdmin\BlazeWS.Server.WebAdmin.csproj", "{8B8A150F-A0DB-42F1-81A0-579D47DEC371}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeWS.Server.Web", "BlazeWS.Server.Web\BlazeWS.Server.Web.csproj", "{5F72F2F6-E2A6-46AE-A5A2-18D1A3CDC09D}"
 EndProject

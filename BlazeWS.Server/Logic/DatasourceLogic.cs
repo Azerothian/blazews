@@ -6,7 +6,7 @@
 // Last Modified By : Matthew Mckenzie
 // Last Modified On : 07-01-2013
 // ***********************************************************************
-// <copyright file="DatasourceLogic.cs" company="">
+// <copyright file="DataSourceLogic.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -22,38 +22,41 @@ using System.Web;
 namespace BlazeWS.Server.Logic
 {
     /// <summary>
-    /// Class DatasourceLogic
+    /// Class DataSourceLogic
     /// </summary>
-    public class DatasourceLogic : LogicAbstract<Datasource>
+    public class DataSourceLogic : LogicAbstract<DataSource>
     {
         /// <summary>
         /// Creates from dto.
         /// </summary>
         /// <param name="session">The session.</param>
         /// <param name="tx">The tx.</param>
-        /// <param name="dtoDatasource">The dto Datasource.</param>
-        /// <returns>Datasource.</returns>
+        /// <param name="dtoDataSource">The dto DataSource.</param>
+        /// <returns>DataSource.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Datasource CreateFromDto(ISession session, ITransaction tx, Shared.Dto.DtoDatasource dtoDatasource)
+        public static DataSource CreateFromDto(ISession session, ITransaction tx, Shared.Dto.DtoDataSource dtoDataSource)
         {
-            if (dtoDatasource.Id != Guid.Empty)
-                dtoDatasource.Id = Guid.Empty;
+            if (dtoDataSource.Id != Guid.Empty)
+                dtoDataSource.Id = Guid.Empty;
 
-            var existing = LoadBy(session, new Func<Datasource, bool>(a=>a.Name == dtoDatasource.Name));
+            var existing = LoadBy(session, new Func<DataSource, bool>(a=>a.Name == dtoDataSource.Name && a.Application.Id  == dtoDataSource.Application));
 
             if(existing != null)
             {
-                throw new ArgumentException(string.Format("Datasource with the name '{0}' already exists", dtoDatasource.Name));
+                throw new ArgumentException(string.Format("DataSource with the name '{0}' already exists", dtoDataSource.Name));
             }
 
-            var neu = AutoMapper.Mapper.Map<Datasource>(dtoDatasource);
+            var DataSource = AutoMapper.Mapper.Map<DataSource>(dtoDataSource);
 
-            neu.Active = true;
-            neu.DateCreated = DateTime.Now;
-            neu.DateModified = DateTime.Now;
-            neu.Save(session, tx);
+            DataSource.Active = true;
+            DataSource.DateCreated = DateTime.Now;
+            DataSource.DateModified = DateTime.Now;
+            DataSource.Save(session, tx);
 
-            return neu;
+            //DataSource.BaseItem = item.Id;
+            DataSource.Save(session, tx);
+
+            return DataSource;
         }
 
     }

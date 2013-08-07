@@ -32,12 +32,17 @@ namespace Illisian.Nhibernate
 			{
 				this.DateCreated = DateTime.Now;
 				this.DateModified = DateTime.Now;
+
+                //session.Merge(this);
 				session.Save(this);
 			}
 			else
 			{
 				this.DateModified = DateTime.Now;
-				session.Update(this);
+
+                var o = session.Merge(this);
+
+				session.Update(o);
 			}
 		}
 

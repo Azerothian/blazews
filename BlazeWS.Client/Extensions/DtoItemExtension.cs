@@ -10,15 +10,15 @@ namespace BlazeWS.Client.Extensions
     public static class DtoItemExtension
     {
 
-        public static void AddChild(this DtoItem item, DtoItem child)
-        {
-            child.Parent = item.Id;
-        }
-        public static IEnumerable<DtoItem> GetChildren(this DtoItem item, ItemService service)
-        {
+        //public static void AddChild(this DtoItem item, DtoItem child)
+        //{
+        //    child.Parent = item.Id;
+        //}
+        //public static IEnumerable<DtoItem> GetChildren(this DtoItem item, ItemService service)
+        //{
 
-            return service.GetChildren(item.Application, item.Id);
-        }
+        //    return service.GetChildren(item.Application, item.Id);
+        //}
 
         public static T GetObject<T>(this DtoItem item)
         {
@@ -26,11 +26,11 @@ namespace BlazeWS.Client.Extensions
             //{
             // throw new ArgumentException("Type requested to cast to does not match stored content");
             //}
-            if (item.ObjectType.StartsWith("application/json;"))
+            if (item.JsonDataType.StartsWith("application/json;"))
             {
-                if (item.ObjectData != null)
+                if (item.JsonData != null)
                 {
-                    return ServiceStack.Text.JsonSerializer.DeserializeFromString<T>(item.ObjectData);
+                    return ServiceStack.Text.JsonSerializer.DeserializeFromString<T>(item.JsonData);
                 }
             }
             else
@@ -43,16 +43,16 @@ namespace BlazeWS.Client.Extensions
         {
             if (obj != null)
             {
-                item.ObjectType = "application/json;type:" + typeof(T).ToString();
+                item.JsonDataType = "application/json;type:" + typeof(T).ToString();
 
 
-                item.ObjectData = ServiceStack.Text.JsonSerializer.SerializeToString(obj);
+                item.JsonData = ServiceStack.Text.JsonSerializer.SerializeToString(obj);
 
             }
             else
             {
-                item.ObjectData = null;
-                item.ObjectType = "";
+                item.JsonData = null;
+                item.JsonDataType = "";
             }
 
         }
