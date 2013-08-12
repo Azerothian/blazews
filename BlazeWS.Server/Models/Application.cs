@@ -32,6 +32,9 @@ namespace BlazeWS.Server.Models
         /// </summary>
         /// <value>The name.</value>
         public virtual string Name { get; set; }
+
+
+        public virtual Guid BaseItem { get; set; }
     }
 
 

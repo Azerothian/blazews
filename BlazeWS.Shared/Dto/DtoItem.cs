@@ -10,12 +10,12 @@ namespace BlazeWS.Shared.Dto
         public DtoItem()
         {
         }
-        public string Path { get; set; } // Is Primary Key
 
+        public Guid Parent { get; set; }
 
+        public string Path { get; set; } 
         public string Name { get; set; }
         public int Type { get; set; }
-        
         public string JsonDataType { get; set; }
         public string JsonData { get; set; }
         public int SystemPermissions { get; set; }

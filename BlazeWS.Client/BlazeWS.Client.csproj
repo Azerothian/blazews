@@ -57,6 +57,7 @@
     <Compile Include="Managers\AutoMapManager.cs" />
     <Compile Include="Services\ApplicationService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

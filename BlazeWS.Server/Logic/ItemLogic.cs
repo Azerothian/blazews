@@ -27,33 +27,34 @@ namespace BlazeWS.Server.Logic
             {
                 throw new ArgumentException("Unable to create an item without an Application id");
             }
-            if (string.IsNullOrEmpty(dtoItem.Path))
-            {
-                throw new ArgumentException("Unable to create an item without an path being set");
-                //if Path is set use it to find the parent item and 
-            }
+            //if (string.IsNullOrEmpty(dtoItem.Path))
+            //{
+            //    throw new ArgumentException("Unable to create an item without an path being set");
+            //    //if Path is set use it to find the parent item and 
+            //}
 
             if (dtoItem.Id != Guid.Empty)
                 dtoItem.Id = Guid.Empty;
             item = AutoMapper.Mapper.Map<Item>(dtoItem);
-            if (item.Parent == Guid.Empty && !string.IsNullOrEmpty(item.Path))
-            {
-                var parentItem = Axes.GetItemFromPath(session, item.Path, true);
-                if (parentItem.Type == (int)ItemType.Generic)
-                {
-                    item.Parent = parentItem.Id;
-                }
-                else if (parentItem.Type == (int)ItemType.Datasource)
-                {
-                    /// forward request to custom data components
-                    /// 
-                    return null;
-                }
-            }
-            else if (item.Parent == Guid.Empty)
-            {
-                throw new ArgumentException("To create a item you either need to supply a parent id or a path to the parent");
-            }
+
+            //if (item.Parent == Guid.Empty && !string.IsNullOrEmpty(item.Path))
+            //{
+            //    var parentItem = Axes.GetItemFromPath(session, item.Path, true);
+            //    if (parentItem.Type == (int)ItemType.Generic)
+            //    {
+            //        item.Parent = parentItem.Id;
+            //    }
+            //    else if (parentItem.Type == (int)ItemType.Datasource)
+            //    {
+            //        /// forward request to custom data components
+            //        /// 
+            //        return null;
+            //    }
+            //}
+            //else if (item.Parent == Guid.Empty)
+            //{
+            //    throw new ArgumentException("To create a item you either need to supply a parent id or a path to the parent");
+            //}
 
             ProcessItemData(session, ref item);
 
@@ -99,23 +100,30 @@ namespace BlazeWS.Server.Logic
                 throw new ArgumentException("Application id has not been supplied");
             }
             IEnumerable<Item> _items;
-            
-            Guid parentID = Guid.Empty;
 
+            Guid parentID = app.Id;
 
-            var i = ItemLogic.Axes.GetItemFromPath(session, app.Path, true);
-            if (i != null)
+            if (parentID == Guid.Empty)
             {
-                parentID = i.Id;
+                var application = ApplicationLogic.LoadById(session, app.Application);
+                parentID = application.BaseItem;
             }
-            else
-            {
-                throw new ArgumentException("Unable to find a parent");
-            }
+
+            //var item = 
+
+            //var i = ItemLogic.Axes.GetItemFromPath(session, app.Path, true);
+            //if (i != null)
+            //{
+            //    parentID = i.Id;
+            //}
+            //else
+            //{
+            //    throw new ArgumentException("Unable to find a parent");
+            //}
             
 
 
-            _items = LoadAllBy(session, p => (p.Application.Id == app.Application)
+            _items = LoadAllBy(session, p => (p.Application != null && p.Application.Id == app.Application)
                 && p.Parent == parentID).ToArray();
 
             return _items;
@@ -152,13 +160,13 @@ namespace BlazeWS.Server.Logic
             {
                 throw new ArgumentException("Application Id was not supplied. Unable to delete Item");
             }
-            if (string.IsNullOrEmpty(action.Path))
+            if (action.Id == Guid.Empty)
             {
-                throw new ArgumentException("Item Path was not supplied. Unable to delete Item");
+                throw new ArgumentException("Item Id was not supplied. Unable to delete Item");
             }
             var result = false;
 
-            var a = LoadBy(session, p => p.Path == action.Path && p.Application == null ? false : p.Application.Id == action.Application);
+            var a = LoadBy(session, p => p.Id == action.Id && p.Application != null && p.Application.Id == action.Application);
             if (a != null)
             {
 

@@ -2,6 +2,7 @@
 using BlazeWS.Shared.Dto;
 using BlazeWS.Shared.Messages.Applications;
 using BlazeWS.Shared.Messages.Items;
+using BlazeWS.Shared.Messages.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace BlazeWS.Client.Managers
                 AutoMapper.Mapper.CreateMap<DtoApplication, CreateApplication>();
                 AutoMapper.Mapper.CreateMap<DtoApplication, UpdateApplication>();
 
+                AutoMapper.Mapper.CreateMap<DtoUser, CreateUser>();
+                AutoMapper.Mapper.CreateMap<DtoUser, UpdateUser>();
 
                 AutoMapper.Mapper.CreateMap<DtoItem, CreateItem>();
                 AutoMapper.Mapper.CreateMap<DtoItem, UpdateItem>();

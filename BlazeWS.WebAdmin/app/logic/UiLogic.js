@@ -25,7 +25,7 @@ define(['jsui/jsui'],
                                 jsui.root.addChild("ctlDesktop", desk);
                             });
                         } else {
-                            requirejs(["views/application/browser"], function (ApplicationSelector) {
+                            requirejs(["views/application/selector"], function (ApplicationSelector) {
                                 var app = new ApplicationSelector();
                                 jsui.root.addChild("ctlApplicationSelector", app);
                             });

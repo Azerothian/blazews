@@ -10,6 +10,8 @@ namespace BlazeWS.Server.Managers
 {
     public class DataManager : IDataSource
     {
+
+        public IDataSource PrimaryDataSource { get; set; }
         public DataManager()
         {
         }
@@ -18,29 +20,57 @@ namespace BlazeWS.Server.Managers
 
         public CreateItemResponse Create(CreateItem action)
         {
-            // Verify Path if datasource
-
-            throw new NotImplementedException();
+            var response = PrimaryDataSource.Create(action);
+            if (response == null)
+            { 
+                //TODO: Process Alternatives
+            
+            }
+            return response;
         }
 
         public DeleteItemResponse Delete(DeleteItem action)
         {
-            throw new NotImplementedException();
+            var response = PrimaryDataSource.Delete(action);
+            if (response == null)
+            {
+                //TODO: Process Alternatives
+
+            }
+            return response;
         }
 
         public GetItemResponse Get(GetItem action)
         {
-            throw new NotImplementedException();
+            var response = PrimaryDataSource.Get(action);
+            if (response == null)
+            {
+                //TODO: Process Alternatives
+
+            }
+            return response;
         }
 
         public ListItemsResponse List(ListItemChildren action)
         {
-            throw new NotImplementedException();
+            var response = PrimaryDataSource.List(action);
+            if (response == null)
+            {
+                //TODO: Process Alternatives
+
+            }
+            return response;
         }
 
         public UpdateItemResponse Update(UpdateItem action)
         {
-            throw new NotImplementedException();
+            var response = PrimaryDataSource.Update(action);
+            if (response == null)
+            {
+                //TODO: Process Alternatives
+
+            }
+            return response;
         }
     }
 }

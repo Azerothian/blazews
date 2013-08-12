@@ -12,8 +12,8 @@ namespace BlazeWS.Shared.Messages.Items
     [Route("/items/children", Verbs="GET")]
     public class ListItemChildren : IReturn<ListItemsResponse> {
         public Guid Application { get; set; }
-     //   public Guid ParentItem { get; set; }
-        public string Path { get; set; }
+        public Guid Id { get; set; }
+       // public string Path { get; set; }
     }
     public class ListItemsResponse : IHasResponseStatus
     {

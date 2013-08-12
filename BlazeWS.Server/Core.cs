@@ -1,4 +1,5 @@
-﻿using BlazeWS.Server.Logic;
+﻿using BlazeWS.Server.Datasources;
+using BlazeWS.Server.Logic;
 using BlazeWS.Server.Managers;
 using BlazeWS.Server.Models;
 using System;
@@ -16,7 +17,10 @@ namespace BlazeWS.Server
             get
             {
                 if (_dataManager == null)
+                {
                     _dataManager = new DataManager();
+                    _dataManager.PrimaryDataSource = new ItemSource();
+                }
                 return _dataManager;
 
             }
@@ -31,7 +35,6 @@ namespace BlazeWS.Server
             new AppHostManager(path).Init();
             AutoMapper.Mapper.Reset();
             new AutoMapManager().Initialise();
-            _dataManager = new DataManager();
         
         }
     }

@@ -55,9 +55,10 @@ namespace BlazeWS.Server.Tests
                 Name = "New Child Item",
                 Path = "/root/New Child Item",
                 Application = _application.Id,
+                Parent = _application.BaseItem
             });
-          //  var item = itemService.Any(new GetItem() { Application = application.Id, Id = application.BaseItem });
-            var children = itemService.Any(new ListItemChildren() {  Path = "/root", Application = _application.Id });
+           // var item = itemService.Any(new GetItem() { Application = _application.Id, Id = _application.BaseItem });
+           var children = itemService.Any(new ListItemChildren() {  Id=_application.BaseItem, Application = _application.Id });
 
 
             Assert.IsTrue(children.Items.Count() > 0);
@@ -77,12 +78,13 @@ namespace BlazeWS.Server.Tests
                 Application = application.Id,
                 Name = userName,
                 JsonDataType = "application/json;",
-                JsonData = " { 'Password':'1234567890', 'GoogleAuth': '123123' }"
+                JsonData = " { 'Password':'1234567890', 'GoogleAuth': '123123' }",
+                Parent = application.BaseItem
             };
 
             var actual = itemService.Any(newitem);
 
-            var result = itemService.Any(new DeleteItem() { Path = newitem.Path, Application = actual.Application });
+            var result = itemService.Any(new DeleteItem() { Id = actual.Id, Application = actual.Application });
             Assert.IsTrue(result.Success);
         }
 

@@ -55,14 +55,10 @@ namespace BlazeWS.Server.Logic
 
             var item = ItemLogic.Create(session, tx, new Shared.Dto.DtoItem()
             {
-                Name = "root"
+                Name = "root",
+                Application = application.Id
             });
-           // item.Parent = null;
-            item.Application = application;
-          //  item.SystemPermissions = ItemPermissionsFlag.UserNone;
-            item.Save(session, tx);
-
-            //application.BaseItem = item.Id;
+            application.BaseItem = item.Id;
             application.Save(session, tx);
 
             return application;

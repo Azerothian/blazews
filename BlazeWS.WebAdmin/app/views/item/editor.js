@@ -45,6 +45,7 @@
                     Id: '[name=Id]',
                     Name: '[name=Name]',
                     Parent: '[name=Parent]',
+                    Path: '[name=Path]',
                     JsonDataType: '[name=JsonDataType]',
                     Type: { selector: '[name=Type]' }
                    // ,ObjectData: '[name=ObjectData]'

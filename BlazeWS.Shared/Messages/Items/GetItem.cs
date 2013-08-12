@@ -9,12 +9,12 @@ using System.Web;
 
 namespace BlazeWS.Shared.Messages.Items
 {
-    [Route("/items/{Id}",Verbs="GET")]
+    [Route("/items",Verbs="GET")]
     public class GetItem : IReturn<GetItemResponse>
     {
         public Guid Id { get; set; }
         public Guid Application { get; set; }
-        public string Path { get; set; }
+      //  public string Path { get; set; }
     }
 
     public class GetItemResponse : DtoItem , IHasResponseStatus
